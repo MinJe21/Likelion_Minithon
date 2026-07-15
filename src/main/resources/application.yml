@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: dasi_backend
+
+  # --- PostgreSQL (pgvector) ---
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dasi
+    username: dasi
+    password: dasi
+
+  ai:
+    # 사용할 모델 제공자 명시 (classpath에 하나뿐이라 생략 가능하지만 명확히)
+    model:
+      chat: google-genai
+      embedding: google-genai
+
+    google:
+      genai:
+        # API 키 방식(Google AI Studio) — 이 값이 있으면 Vertex AI 대신 Gemini Developer API 사용
+        api-key: ${GEMINI_API_KEY}
+        vertex-ai: false
+        chat:
+          model: gemini-3.5-flash   # gemini-2.5-flash 는 신규 사용자에게 차단됨(404) → 최신 모델로 교체
+          temperature: 0.2
+        embedding:
+          api-key: ${GEMINI_API_KEY}
+          text:
+            model: gemini-embedding-001
+            dimensions: 768          # pgvector.dimensions 와 반드시 일치
+
+    # --- pgvector 벡터스토어 ---
+    vectorstore:
+      pgvector:
+        initialize-schema: true      # 최초 실행 시 확장/테이블 자동 생성
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 768              # 임베딩 차원과 반드시 일치
+
+# 디버깅용 파일 로그 (스택트레이스를 logs/app.log 로도 남김)
+logging:
+  file:
+    name: logs/app.log
+  level:
+    org.springframework.ai: DEBUG
+    org.example.dasi_backend: DEBUG
+
+# 앱 커스텀 설정: 시작 시 CSV를 벡터스토어에 넣을지 여부
+app:
+  ingest:
+    enabled: true

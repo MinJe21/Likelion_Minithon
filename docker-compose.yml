@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17   # pgvector 확장이 미리 설치된 PostgreSQL 17
+    container_name: dasi-postgres
+    environment:
+      POSTGRES_DB: dasi
+      POSTGRES_USER: dasi
+      POSTGRES_PASSWORD: dasi
+    ports:
+      - "5432:5432"
+    volumes:
+      - dasi-pgdata:/var/lib/postgresql/data
+
+volumes:
+  dasi-pgdata:

@@ -1,0 +1,202 @@
+[
+  {
+    "case_id": "case_ami_museum",
+    "case_name": "아미미술관",
+    "region": "충청남도 당진시 순성면",
+    "related_models": ["창작·예술 레지던시"],
+    "summary": "1993년 폐교된 유동초등학교를 화가 부부가 매입해 2011년 정식 개관한 사립미술관이다.",
+    "positive_insight": "폐교 건물 원형과 아미산 자연을 살린 친근한 분위기로 연 10만 명 이상이 찾는 지역 대표 문화공간이 되었다.",
+    "risk_insight": "대규모 자본 없이 운영자가 장기간 직접 매입·리모델링·관리를 감당해야 하는 부담이 있다.",
+    "source": "https://www.nongmin.com/article/20220329353102"
+  },
+  {
+    "case_id": "case_nuru_museum",
+    "case_name": "누루미술관",
+    "region": "경상남도 밀양시",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "폐교된 명례초등학교를 활용해 무료로 개방하는 '작은미술관'이다.",
+    "positive_insight": "무료 전시와 작가와의 대화 프로그램으로 문화 접근성이 낮던 농촌 주민에게 문화향유 기회를 제공한다.",
+    "risk_insight": "관람객 상당수가 고령 지역주민이라 방문 수요 확대와 지속적 운영에 한계가 있다.",
+    "source": "https://www.korea.kr/news/reporterView.do?newsId=148905966"
+  },
+  {
+    "case_id": "case_muui_art",
+    "case_name": "평창무이예술관",
+    "region": "강원특별자치도 평창군 봉평면",
+    "related_models": ["창작·예술 레지던시"],
+    "summary": "1999년 폐교된 무이초등학교를 2001년 예술가들이 리모델링해 만든 예술관이다.",
+    "positive_insight": "운동장을 조각공원으로, 교실을 전시·체험실로 살려 예술과 자연이 어우러진 감성 여행지로 25년간 유지되고 있다.",
+    "risk_insight": "특정 예술가 그룹 중심 운영이라 세대 교체와 장기 지속 가능성 확보가 과제다.",
+    "source": "http://www.momscareer.co.kr/news/articleViewRedirect.html?temp_data=1065581031404543"
+  },
+  {
+    "case_id": "case_yeonhong_museum",
+    "case_name": "연홍미술관",
+    "region": "전라남도 고흥군 연홍도",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "1998년 폐교된 금산초 연홍분교를 리모델링해 2006년 개관했고 섬 전체가 '지붕 없는 미술관'이 되었다.",
+    "positive_insight": "미술관을 넘어 선착장·마을 골목·포구로 작품을 확장해 섬 전체를 예술 관광지로 만든 점이 성공 요인이다.",
+    "risk_insight": "섬이라 정기 여객선 운항과 계절 관광에 의존하는 접근성 한계가 있다.",
+    "source": "https://www.segye.com/newsView/20200601517855"
+  },
+  {
+    "case_id": "case_yeongdeok_camping",
+    "case_name": "영덕오토캠핑장 (야성초 창포분교)",
+    "region": "경상북도 영덕군",
+    "related_models": ["캠핑·야외 체험장"],
+    "summary": "2015년 폐교된 야성초 창포분교를 바다 조망 오토캠핑장으로 조성했다.",
+    "positive_insight": "해변 도보 10분 거리 입지와 깨끗한 샤워·화장실 등 편의시설로 이용객 만족도가 높다.",
+    "risk_insight": "해안 관광 성수기에 이용이 집중되는 계절성 수요에 좌우된다.",
+    "source": "https://m.korea.kr/news/reporterView.do?newsId=148903108"
+  },
+  {
+    "case_id": "case_hampyeong_camping",
+    "case_name": "함평나비마을 서울캠핑장 (성남초)",
+    "region": "전라남도 함평군",
+    "related_models": ["캠핑·야외 체험장"],
+    "summary": "2002년 폐교된 성남초등학교를 개조해 2017년 개장한 가족형 캠핑장이다.",
+    "positive_insight": "저렴한 이용료와 교실을 개조한 실내 북카페·탁구·놀이공간으로 사계절 가족 이용이 가능하다.",
+    "risk_insight": "20여 개 야영 데크와 편의시설의 유지관리 및 예약 수요 관리가 지속적으로 필요하다.",
+    "source": "https://m.seongjuro.co.kr/view.php?idx=58301"
+  },
+  {
+    "case_id": "case_himalaya_camp",
+    "case_name": "문경 히말라야 캠핑학교 (가은초 희양분교)",
+    "region": "경상북도 문경시 가은읍",
+    "related_models": ["캠핑·야외 체험장"],
+    "summary": "폐교된 가은초 희양분교를 캠핑과 체험교육을 접목한 체류형 교육 거점으로 운영한다.",
+    "positive_insight": "전국 카라반 가족과 지역 주민이 벽화 그리기·전래놀이 등으로 자연스럽게 어우러지는 교류를 만들어냈다.",
+    "risk_insight": "일회성 행사에 그치기 쉬워 계절별 콘텐츠 다양화와 안정적 운영 재원 확보가 과제다.",
+    "source": "https://v.daum.net/v/20260428180351543"
+  },
+  {
+    "case_id": "case_buncheon_santa_stay",
+    "case_name": "분천산타마을 숙박시설 (소천초 분천분교)",
+    "region": "경상북도 봉화군 소천면",
+    "related_models": ["폐교 숙박·펜션"],
+    "summary": "폐교된 소천초 분천분교를 분천산타마을 관광객용 친환경 숙박시설(15실)로 조성했다.",
+    "positive_insight": "겨울 산타마을 관광 수요와 연계해 카페·레스토랑을 갖춘 체류형 숙박으로 관광객을 유입했다.",
+    "risk_insight": "겨울 산타마을 시즌에 편중된 계절성 수요에 크게 의존한다.",
+    "source": "https://m.sedaily.com/amparticle/13853925"
+  },
+  {
+    "case_id": "case_countryroad_cafe",
+    "case_name": "컨츄리로드커피 (신두초)",
+    "region": "충청남도 태안군 원북면",
+    "related_models": ["지역 카페·문화공간"],
+    "summary": "1993년 통폐합된 신두초등학교를 청년 대표들이 리모델링해 연 카페다.",
+    "positive_insight": "SNS와 방송으로 이색 명소로 알려져 하루 300~400명이 찾는 폐교 활용 성공 모델이 되었다.",
+    "risk_insight": "이전의 캠핑장·학원 등 재활용 시도가 실패한 뒤에야 정착해 오랜 리모델링 기간이 필요했다.",
+    "source": "https://www.khan.co.kr/article/202310052234035"
+  },
+  {
+    "case_id": "case_ttaengttaeng_village",
+    "case_name": "땡땡마을 (궁근정초)",
+    "region": "울산광역시 울주군 상북면",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "2016년 폐교된 궁근정초를 2020년 울산마을교육공동체거점센터로 조성했다.",
+    "positive_insight": "공유오피스·카페·체험공방 등으로 연 3~4만 명이 찾는 전 세대 대상 마을교육 거점이 되었다.",
+    "risk_insight": "지역사회 참여 확대와 프로그램 지속성 확보가 향후 과제로 남아 있다.",
+    "source": "https://v.daum.net/v/20260301064708058"
+  },
+  {
+    "case_id": "case_ground_cheongdo",
+    "case_name": "그라운드 청도 (관하초)",
+    "region": "경상북도 청도군 매전면",
+    "related_models": ["캠핑·야외 체험장"],
+    "summary": "폐교된 관하초 건물은 어린이급식관리지원센터로, 운동장은 대형 야외 놀이터로 활용한다.",
+    "positive_insight": "학교 시절의 큰 나무들을 그대로 살려 그늘이 있는 한적한 가족 힐링 놀이공간을 조성했다.",
+    "risk_insight": "쓰레기통·매점 등 편의시설이 부족해 방문객이 직접 준비해야 하는 불편이 있다.",
+    "source": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0003240978"
+  },
+  {
+    "case_id": "case_samcheok_miro_garden",
+    "case_name": "삼척미로정원 (미로초 두타분교)",
+    "region": "강원특별자치도 삼척시 미로면",
+    "related_models": ["캠핑·야외 체험장"],
+    "summary": "1999년 폐교된 미로초 두타분교를 투명카누·두부만들기 등 체험형 정원으로 조성했다.",
+    "positive_insight": "두타산 자연과 어우러진 정원과 수상·공예 체험 등 다양한 활동으로 체류형 관광지를 만들었다.",
+    "risk_insight": "외진 입지와 단체 체험 사전예약 필요로 접근성·운영 부담이 있다.",
+    "source": "https://www.segye.com/newsView/20200601517855"
+  },
+  {
+    "case_id": "case_chaekmaeul_haeri",
+    "case_name": "고창 책마을해리 (해리초 나성분교)",
+    "region": "전북특별자치도 고창군 해리면",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "폐교된 해리초 나성분교를 도서관·출판을 테마로 한 복합문화공간으로 재생했다.",
+    "positive_insight": "'누구나 쓰고 누구나 도서관' 모델로 주민 저자 100여 명을 배출하는 출판·글쓰기 공동체를 형성했다.",
+    "risk_insight": "지속적인 지역 참여와 출판 지원 시스템에 운영이 의존한다.",
+    "source": "https://www.segye.com/newsView/20200601517855"
+  },
+  {
+    "case_id": "case_muan_theme_park",
+    "case_name": "무안 전통생활문화 테마파크 (몽탄남초)",
+    "region": "전라남도 무안군 몽탄면",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "폐교된 몽탄남초를 1960~70년대 생활상을 재현한 전통생활문화 테마파크로 조성했다.",
+    "positive_insight": "지역 수집가가 기증한 3천여 점의 유물과 주민 해설사로 세대 간 향수·교육 체험을 제공한다.",
+    "risk_insight": "전시·체험 콘텐츠의 지속적 갱신과 방문 수요 유지가 과제다.",
+    "source": "https://m.seongjuro.co.kr/view.php?idx=58301"
+  },
+  {
+    "case_id": "case_tongyeong_catbook",
+    "case_name": "통영 캣북 (용호분교)",
+    "region": "경상남도 통영시 한산면 용호도",
+    "related_models": ["지역 카페·문화공간"],
+    "summary": "2012년 폐교된 용호분교를 길고양이 보호실과 캣북 카페로 리모델링했다.",
+    "positive_insight": "'동물 생명 보호·섬 활성화'라는 공동 목표로 시와 주민이 협력하고 도 예산을 확보한 점이 주효했다.",
+    "risk_insight": "여객선 하루 3회뿐인 외딴 섬 입지와 280명 소규모 인구로 접근성·운영 여건이 취약하다.",
+    "source": "https://www.khan.co.kr/article/202310052234035"
+  },
+  {
+    "case_id": "case_goseong_youth_art",
+    "case_name": "고성청년예술촌 (고성중 삼산분교)",
+    "region": "경상남도 고성군 삼산면",
+    "related_models": ["창작·예술 레지던시"],
+    "summary": "2016년 폐교된 고성중 삼산분교를 2024년 청년 예술가 창작·입주 공간으로 리모델링했다.",
+    "positive_insight": "스튜디오·공용주방·전시공간과 입주 숙소를 갖춰 청년 작가와 주민이 교류하는 예술 생태계를 조성했다.",
+    "risk_insight": "지방소멸대응기금 기반 사업이라 소멸·고령화 지역에서 장기 운영 기반 확보가 과제다.",
+    "source": "https://arte365.kr/?p=110075"
+  },
+  {
+    "case_id": "case_gamjakkot_studio",
+    "case_name": "감자꽃스튜디오 (평창초 노산분교)",
+    "region": "강원특별자치도 평창군 평창읍",
+    "related_models": ["창작·예술 레지던시", "주민 커뮤니티·복합문화공간"],
+    "summary": "1999년 폐교된 노산분교를 2004년 리모델링한 복합문화공간이자 창작·교육 거점이다.",
+    "positive_insight": "지역주민 문화예술교육에 집중 투자하고 식사·숙박은 주민 시설을 이용하도록 유도해 지역경제와 연계했다.",
+    "risk_insight": "관광객이 늘어도 마을 인구는 계속 줄고 빈집이 느는 등 지역 소멸 흐름은 여전하다.",
+    "source": "https://www.ihalla.com/read.php3?aid=1319382000377878236"
+  },
+  {
+    "case_id": "case_uiseong_safety",
+    "case_name": "의성안전체험관 (다인초 달제분교)",
+    "region": "경상북도 의성군",
+    "related_models": ["유아 체험센터"],
+    "summary": "폐교된 다인초 달제분교를 2021년 경북 최초의 종합안전체험관으로 조성했다.",
+    "positive_insight": "지진·화재·교통 등 재난안전 체험 프로그램으로 학생과 시민이 활용하는 안전교육 거점이 되었다.",
+    "risk_insight": "교육청 주도 공공시설이라 안정적 운영 예산과 프로그램 갱신에 의존한다.",
+    "source": "https://www.asiae.co.kr/article/2025081809440701135"
+  },
+  {
+    "case_id": "case_gyeongju_safety",
+    "case_name": "경주안전체험관 (안강북부초)",
+    "region": "경상북도 경주시",
+    "related_models": ["유아 체험센터"],
+    "summary": "폐교된 안강북부초를 2022년 5개 분야 25개 체험 프로그램을 갖춘 안전체험관으로 조성했다.",
+    "positive_insight": "연 2만 명 이상이 찾고 만족도가 높은 지역 특화 안전교육 시설로 자리매김했다.",
+    "risk_insight": "1만4천㎡ 규모의 대형 부지·시설 유지와 지속적 프로그램 운영에 공공 재원이 필요하다.",
+    "source": "https://www.asiae.co.kr/article/2025081809440701135"
+  },
+  {
+    "case_id": "case_cheongsong_culture",
+    "case_name": "청송 대전초 생활문화센터",
+    "region": "경상북도 청송군",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "폐교된 대전초등학교를 미술 작품 등을 전시하는 생활문화센터로 개조했다.",
+    "positive_insight": "서예·색소폰·민요 등 문화강좌와 전시로 지역민과 관광객의 호응을 얻었다.",
+    "risk_insight": "소규모 지역 시설이라 강좌·전시 콘텐츠의 꾸준한 운영과 이용 수요 유지가 관건이다.",
+    "source": "https://m.sedaily.com/amparticle/13853925"
+  }
+]

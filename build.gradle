@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.1.0'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'org.example'
+version = '0.0.1-SNAPSHOT'
+description = 'dasi_backend'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+    // Spring AI 마일스톤을 쓸 경우 대비 (GA만 쓰면 없어도 됨)
+    maven { url 'https://repo.spring.io/milestone' }
+}
+
+ext {
+    springAiVersion = '2.0.0'
+}
+
+dependencies {
+    // --- Web / REST ---
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // --- Spring AI: Gemini(채팅) + 임베딩 = Google GenAI 모듈 (API 키 방식 지원) ---
+    implementation 'org.springframework.ai:spring-ai-starter-model-google-genai'
+    implementation 'org.springframework.ai:spring-ai-starter-model-google-genai-embedding'
+    // --- pgvector 벡터스토어 ---
+    implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
+    // --- RAG용 QuestionAnswerAdvisor 제공 ---
+    implementation 'org.springframework.ai:spring-ai-vector-store-advisor'
+
+    // --- DB: PostgreSQL (pgvector 확장 사용) ---
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // --- CSV 파싱 (따옴표 안의 콤마 처리 위해) ---
+    implementation 'org.apache.commons:commons-csv:1.11.0'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

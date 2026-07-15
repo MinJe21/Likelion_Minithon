@@ -1,0 +1,50 @@
+[
+  {
+    "case_id": "case_child_center",
+    "case_name": "폐교 유아 체험·교육센터",
+    "related_models": ["model_child_experience"],
+    "summary": "폐교 교실을 유아 체험·교육 프로그램실로 전환한 사례",
+    "positive_insight": "교육 목적의 활용과 연결성이 높고, 교실 단위 공간을 프로그램실로 전환하기 좋음",
+    "risk_insight": "행정 절차, 예산, 시설 노후화와 유아 안전시설 검토가 중요함"
+  },
+  {
+    "case_id": "case_local_cafe_gallery",
+    "case_name": "폐교 카페·문화공간",
+    "related_models": ["model_local_cafe", "model_community"],
+    "summary": "폐교 교실과 마당을 카페 및 소규모 전시·문화공간으로 활용한 사례",
+    "positive_insight": "옛 학교의 기억과 경관을 브랜딩에 활용할 수 있고 관광 동선과 연계 가능",
+    "risk_insight": "접근성과 상시 방문 확보가 수익성의 핵심 변수이며 주방·위생 설비 보수가 필요함"
+  },
+  {
+    "case_id": "case_school_pension",
+    "case_name": "폐교 민박·펜션 운영",
+    "related_models": ["model_lodging"],
+    "summary": "폐교를 숙박시설로 전환하여 단체·가족 단위 방문객을 받은 사례",
+    "positive_insight": "자연 경관과 넓은 운동장·부지를 활용할 수 있음",
+    "risk_insight": "숙박업 인허가 확인, 시설 정비비, 식사 제공, 운영자 지속성이 중요함"
+  },
+  {
+    "case_id": "case_art_village",
+    "case_name": "폐교 예술창작촌·레지던시",
+    "related_models": ["model_art_residency", "model_community"],
+    "summary": "폐교를 예술가 작업실과 전시공간으로 전환한 사례",
+    "positive_insight": "교실을 작업실·전시실로 전환하기 쉽고 지역 문화 자산으로 브랜딩 가능",
+    "risk_insight": "작가 유치와 프로그램 지속성, 운영 주체와 예산 확보가 관건"
+  },
+  {
+    "case_id": "case_community_complex",
+    "case_name": "폐교 주민 복합문화공간",
+    "related_models": ["model_community"],
+    "summary": "폐교를 주민 커뮤니티·평생학습·다목적 문화공간으로 활용한 사례",
+    "positive_insight": "공공성이 높고 강당·다목적실 등 큰 공간을 다양하게 활용 가능",
+    "risk_insight": "안정적 운영 주체와 인력, 시설 유지비, 지속 가능한 프로그램이 필요함"
+  },
+  {
+    "case_id": "case_camping_experience",
+    "case_name": "폐교 캠핑·야외 체험장",
+    "related_models": ["model_camping"],
+    "summary": "폐교 운동장과 야외공간을 캠핑·체험장으로 활용한 사례",
+    "positive_insight": "넓은 운동장을 활용해 초기 시설 투자 부담을 낮출 수 있음",
+    "risk_insight": "계절성 수요 변동, 안전관리, 상하수도·정화조 등 기반시설 확인이 필요함"
+  }
+]

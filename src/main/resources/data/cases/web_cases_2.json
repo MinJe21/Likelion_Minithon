@@ -1,0 +1,232 @@
+[
+  {
+    "case_id": "case2_masan_jihyeui_bada_library",
+    "case_name": "마산 지혜의바다도서관",
+    "region": "경상남도 창원시 마산합포구",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "옛 진전중학교를 리모델링해 2018년 개관한 공공도서관으로 독서·문화·휴식 기능을 결합한 복합문화공간이다.",
+    "positive_insight": "개관 이후 지역 독서·문화 프로그램을 꾸준히 운영해 경남을 대표하는 지역 문화공간으로 자리 잡았다.",
+    "risk_insight": "개관 7년 만에 약 20억 원을 들여 재단장할 만큼 폐교 시설의 노후화와 유지·보수 비용 부담이 크다.",
+    "source": "https://www.mhns.co.kr/news/articleView.html?idxno=750865"
+  },
+  {
+    "case_id": "case2_gimhae_jihyeui_bada_library",
+    "case_name": "김해 지혜의바다도서관",
+    "region": "경상남도 김해시",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "폐교를 리모델링해 조성한 공공도서관으로 마산 지혜의바다와 함께 경남 교육청의 대표 폐교 활용 사례로 꼽힌다.",
+    "positive_insight": "폐교를 독서·복합문화공간으로 재단장해 지역 주민의 문화 거점으로 활용되고 있다.",
+    "risk_insight": "농어촌 폐교 도서관은 이용자 접근성과 방문 수요 확보가 지속 운영의 관건이다.",
+    "source": "https://www.busan.com/view/busan/view.php?code=2023120114194470975"
+  },
+  {
+    "case_id": "case2_gayasan_junglebook",
+    "case_name": "가야산독서당 정글북",
+    "region": "경상남도 합천군 가야면",
+    "related_models": ["주민 커뮤니티·복합문화공간", "캠핑·야외 체험장"],
+    "summary": "옛 숭산초등학교를 활용해 독서·공연·전시·놀이·캠핑이 어우러진 그림책 특화 독서체험기관으로 조성했다.",
+    "positive_insight": "방갈로·북캠프 등 숙박·체험을 결합한 신개념 독서공간으로 차별화해 가족 단위 방문객을 끌어들였다.",
+    "risk_insight": "가야산 산간 폐교라는 입지로 접근성이 낮아 지속적 프로그램 유치가 과제다.",
+    "source": "https://www.busan.com/view/busan/view.php?code=2023120114194470975"
+  },
+  {
+    "case_id": "case2_busan_env_experience_center",
+    "case_name": "부산환경체험교육관",
+    "region": "부산광역시 해운대구",
+    "related_models": ["유아 체험센터", "주민 커뮤니티·복합문화공간"],
+    "summary": "학령인구 감소로 폐교된 옛 반여초등학교를 2025년 환경체험 교육공간으로 전환한 부산 첫 사례다.",
+    "positive_insight": "정부 환경교육 시범사업에 선정돼 유아 놀이형 교실·환경체험 공방·전시관 등 특화 콘텐츠를 갖췄다.",
+    "risk_insight": "사업 선정 후 개관까지 약 4년이 걸릴 만큼 리모델링과 전시 콘텐츠 구축에 시간이 소요됐다.",
+    "source": "https://news.knn.co.kr/news/article/177930"
+  },
+  {
+    "case_id": "case2_kim_youngkap_dumoak",
+    "case_name": "김영갑갤러리 두모악",
+    "region": "제주특별자치도 서귀포시 성산읍",
+    "related_models": ["창작·예술 레지던시"],
+    "summary": "2001년 폐교된 삼달초등학교를 임대해 2002년 문을 연, 사진작가 김영갑의 작품을 전시하는 사진 갤러리다.",
+    "positive_insight": "옛 교실 8칸을 전시·영상 공간과 야외 정원으로 살려 제주를 대표하는 폐교 문화명소로 자리 잡았다.",
+    "risk_insight": "개인이 운영하는 사설 갤러리로 2024년 운영난에 따른 휴관에 들어가는 등 재정 지속성이 취약하다.",
+    "source": "https://seogwipo.grandculture.net/seogwipo/toc/GC04601494"
+  },
+  {
+    "case_id": "case2_junam_env_school",
+    "case_name": "주남환경스쿨",
+    "region": "경상남도 창원시",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "1995년 폐교된 옛 용산초등학교를 2008년 청소년·시민 대상 환경교육장으로 재단장한 곳이다.",
+    "positive_insight": "람사르협약 개최지라는 지역 정체성과 연계하고 주민을 생태해설가로 양성해 환경교육 허브로 성장했다.",
+    "risk_insight": "생태 정체성 연계가 성공 요인이었던 만큼 방문 유인을 위한 프로그램의 지속적 갱신이 필요하다.",
+    "source": "https://www.rwn.co.kr/news/articleView.html?idxno=51152"
+  },
+  {
+    "case_id": "case2_nanjeong_peace_center",
+    "case_name": "인천난정평화교육원",
+    "region": "인천광역시 강화군 교동면",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "2019년 폐교된 난정초등학교를 리모델링해 전시·체험·교육관과 북카페, 생활관을 갖춘 평화·통일 교육기관으로 조성했다.",
+    "positive_insight": "접경 도서지역이라는 입지를 살려 평화·공존 교육 허브로 특화하고 급식실을 북카페로 개방해 주민과 공유했다.",
+    "risk_insight": "162억 원 대규모 예산이 투입됐고 진입로 등 접경 섬 지역의 접근성 문제 해결이 과제였다.",
+    "source": "https://www.incheontoday.com/news/articleView.html?idxno=216857"
+  },
+  {
+    "case_id": "case2_eros_seogak_museum",
+    "case_name": "에로스서각박물관",
+    "region": "전라남도 신안군 암태면",
+    "related_models": ["창작·예술 레지던시"],
+    "summary": "암태도 옛 동초등학교 폐교를 리모델링해 서각·성(性) 주제 예술 작품을 전시하는 박물관으로 조성했다.",
+    "positive_insight": "신안 1도1뮤지엄 사업의 하나로 폐교 부지를 활용해 조성 비용을 절감하고 섬 관광 콘텐츠로 재탄생시켰다.",
+    "risk_insight": "섬 지역 폐교라는 특성상 접근성이 낮아 관람객 유치가 쉽지 않다.",
+    "source": "https://www.shinan.go.kr/home/museum/museum03/museum05_20/museum05_05/page.wscms"
+  },
+  {
+    "case_id": "case2_bonghwa_seasonal_worker_dorm",
+    "case_name": "봉화 봉성분교 계절근로자 기숙사",
+    "region": "경상북도 봉화군 봉성면",
+    "related_models": [],
+    "summary": "옛 봉화중학교 봉성분교를 리모델링해 국내외 농업 계절근로자 20실·90명 규모의 기숙사로 전환했다.",
+    "positive_insight": "인접 부지를 주민 체육공원으로 조성하는 등 지역 수요와 결합해 주민 동의율이 80%에 이를 만큼 호응이 높았다.",
+    "risk_insight": "폐교 매입·활용 과정에서 주민 동의 확보와 초기 소통이 사업 성패를 가르는 핵심 변수다.",
+    "source": "https://m.sedaily.com/amparticle/13853925"
+  },
+  {
+    "case_id": "case2_gyeongju_korean_edu_center",
+    "case_name": "경주한국어교육센터",
+    "region": "경상북도 경주시",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "방치됐던 옛 노월초등학교를 2023년 이주민 대상 한국어 교육 공립 대안학교로 재단장했다.",
+    "positive_insight": "이중언어 교사를 배치하고 3개월 집중 교육과정을 운영해 급증한 지역 이주민의 정착을 지원했다.",
+    "risk_insight": "폐교 방치 시절 우범·쓰레기 투기 장소가 되면서 사업 초기 주민의 우려가 있었다.",
+    "source": "https://www.khan.co.kr/article/202310052234035"
+  },
+  {
+    "case_id": "case2_cafe_maisan_jwasan",
+    "case_name": "카페 마이산 (좌산초)",
+    "region": "전북특별자치도 진안군 성수면",
+    "related_models": ["지역 카페·문화공간", "캠핑·야외 체험장"],
+    "summary": "1999년 폐교된 좌산초등학교를 활용한 카페 겸 복합문화공간으로 운동장을 야외 캠핑장으로 쓴다.",
+    "positive_insight": "옛 창문·문·책상 등 학교 요소를 그대로 살리고 갤러리·영상실 등 다양한 테마공간을 더해 차별화했다.",
+    "risk_insight": "앞서 캠핑장·학원 등 여러 활용 시도가 실패한 부지로, 폐교 재생은 충분한 사업성 검증이 필요함을 보여준다.",
+    "source": "https://www.jjilbo.co.kr/news/articleView.html?idxno=299641"
+  },
+  {
+    "case_id": "case2_cheongrim_observatory",
+    "case_name": "청림천문대",
+    "region": "전북특별자치도 부안군 상서면",
+    "related_models": ["캠핑·야외 체험장"],
+    "summary": "옛 부안상서초등학교 청림분교를 활용해 2011년 개관한 천문 관측·청소년 수련 시설이다.",
+    "positive_insight": "주야간 천체 관측과 망원경 만들기·과학공작 등 교육 특화 프로그램으로 폐교를 체험 명소로 만들었다.",
+    "risk_insight": "야간 천체 관측 특성상 기상 조건과 접근성에 이용률이 크게 좌우된다.",
+    "source": "https://www.jjilbo.co.kr/news/articleView.html?idxno=299641"
+  },
+  {
+    "case_id": "case2_jeju_kkumsaemi",
+    "case_name": "제주꿈새미",
+    "region": "제주특별자치도 제주시",
+    "related_models": ["유아 체험센터"],
+    "summary": "옛 회천분교 부지를 활용해 2025년 3월 개원한 유아 대상 사계절 자연놀이터로 제주유아교육진흥원 분원이다.",
+    "positive_insight": "폐교 유휴 부지를 유아 발달을 위한 자연·놀이 체험 공간으로 전환한 최신 공공 활용 사례다.",
+    "risk_insight": "2025년 개원한 신규 시설로 운영 성과와 지속성은 아직 검증 단계에 있다.",
+    "source": "https://www.news1.kr/local/jeju/5732078"
+  },
+  {
+    "case_id": "case2_nampo_art_museum",
+    "case_name": "남포미술관",
+    "region": "전라남도 고흥군",
+    "related_models": ["창작·예술 레지던시"],
+    "summary": "1965년 개교 후 2003년 폐교된 옛 영남중학교 건물을 미술관으로 개조하고 정원 하담정을 함께 조성했다.",
+    "positive_insight": "작은 시골 폐교와 정원을 결합해 전시와 정원 관람이 어우러진 지역 예술 공간으로 자리 잡았다.",
+    "risk_insight": "사설 미술관 형태로 운영돼 지속적 재정 자립과 관람객 유치가 과제다.",
+    "source": "https://www.inews365.com/news/article.html?no=899395"
+  },
+  {
+    "case_id": "case2_muju_art_studio",
+    "case_name": "무주예술창작스튜디오",
+    "region": "전북특별자치도 무주군",
+    "related_models": ["창작·예술 레지던시"],
+    "summary": "2001년 폐교된 초등학교 건물을 입주 작가들의 창작 스튜디오로 활용하는 예술 공간이다.",
+    "positive_insight": "여러 입주 작가가 상주하며 단체·개인 전시를 열어 폐교를 지역 창작 거점으로 활용하고 있다.",
+    "risk_insight": "입주 작가 중심 운영이라 대중 접근성과 수익 모델 확보가 지속 운영의 과제다.",
+    "source": "https://www.inews365.com/news/article.html?no=899395"
+  },
+  {
+    "case_id": "case2_madong_creative_village",
+    "case_name": "마동창작마을",
+    "region": "충청북도 청주시 상당구 문의면",
+    "related_models": ["창작·예술 레지던시"],
+    "summary": "문의면의 폐교를 화가가 개인적으로 매입·운영하며 창작·전시 공간으로 활용하는 예술마을이다.",
+    "positive_insight": "폐교를 잘 활용한 대표 공간으로 꼽히며 충북 지역의 대표적 폐교 창작공간으로 기능한다.",
+    "risk_insight": "개인 작가가 운영해 공공성과 지속성 확보가 어렵고, 충북은 공공 운영 폐교 예술공간이 부족한 실정이다.",
+    "source": "https://www.inews365.com/news/article.html?no=899395"
+  },
+  {
+    "case_id": "case2_gangneung_yemac_art_center",
+    "case_name": "강릉 예맥아트센터",
+    "region": "강원특별자치도 강릉시 왕산면",
+    "related_models": ["폐교 숙박·펜션", "창작·예술 레지던시"],
+    "summary": "1995년 폐교된 왕산초등학교 목계분교를 강릉문화원이 2009년 리모델링해 게스트하우스·야영장·전시실·야외무대로 활용한다.",
+    "positive_insight": "숙박·야영과 문화예술교육·녹색체험을 결합해 15년간 방치됐던 폐교를 문화연수 공간으로 되살렸다.",
+    "risk_insight": "15년간 방치된 뒤 활용해 리모델링에 상당한 투자와 정비가 필요했다.",
+    "source": "https://www.gjnews.com/news/view.php?idx=72212"
+  },
+  {
+    "case_id": "case2_yeongcheon_english_town",
+    "case_name": "영천영어마을",
+    "region": "경상북도 영천시",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "옛 영북초등학교를 활용해 초·중학생 대상 영어 교육을 제공하는 영어체험 교육센터로 조성했다.",
+    "positive_insight": "원어민 교사 수업을 도입해 지역 영어 회화 교육 거점으로 자리매김했다.",
+    "risk_insight": "원어민·프로그램 운영 비용과 영어캠프 수요 변화에 대한 대응이 지속 운영의 관건이다.",
+    "source": "https://www.gjnews.com/news/view.php?idx=72212"
+  },
+  {
+    "case_id": "case2_haneulnae_wildflower_village",
+    "case_name": "하늘내들꽃마을",
+    "region": "전북특별자치도 장수군 천천면",
+    "related_models": ["폐교 숙박·펜션", "캠핑·야외 체험장"],
+    "summary": "1999년 폐교된 옛 연평초등학교를 개조해 숙박·농사·전통음식·생태학습이 어우러진 녹색농촌체험마을로 운영한다.",
+    "positive_insight": "친환경 전자상거래 기업이 귀농·이전해 온라인 사업과 농촌 공동체를 결합, 충성도 높은 소비자·방문객을 확보했다.",
+    "risk_insight": "도농교류 커뮤니티가 기반인 만큼 방문객 확대와 가공·상품 다변화가 지속 과제다.",
+    "source": "https://www.ohmynews.com/NWS_Web/View/at_pg.aspx?CNTN_CD=A0000222235"
+  },
+  {
+    "case_id": "case2_yeongwol_edu_history_museum",
+    "case_name": "영월 초등교육박물관·근현대생활사박물관",
+    "region": "강원특별자치도 영월군 북면",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "북면 문곡리의 폐교를 리모델링해 두 채의 건물을 각각 초등교육박물관과 근현대생활사박물관으로 조성했다.",
+    "positive_insight": "'박물관 고을' 영월의 폐교 활용 사례로 옛 학교 건물에 교육·생활사 전시 콘텐츠를 담아 재생했다.",
+    "risk_insight": "산간 폐교 밀집형 박물관으로 개별 시설의 관람객 유치 편차가 나타날 수 있다.",
+    "source": "https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=8370f0a5-a242-4459-8c42-9f27d5f231cb"
+  },
+  {
+    "case_id": "case2_yeosu_pyeongsa_yeollinmaru",
+    "case_name": "평사열린마루",
+    "region": "전라남도 여수시",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "2024년 폐교된 봉덕초등학교 평사분교를 리모델링해 강의실·북카페·주민쉼터·스크린파크골프장을 갖춘 평생교육 플랫폼으로 조성했다.",
+    "positive_insight": "교육지원청·지자체·마을공동체가 함께 참여하는 협력 거버넌스로 세대와 지역을 연결하는 평생교육 공간을 만들었다.",
+    "risk_insight": "약 31억 원을 투입한 신규 개관 시설로 세대·주민 참여를 지속시키는 것이 관건이다.",
+    "source": "https://www.gjdream.com/news/articleView.html?idxno=668506"
+  },
+  {
+    "case_id": "case2_yeosu_hwatae_healing",
+    "case_name": "여수 화태초 황토길 힐링공간",
+    "region": "전라남도 여수시",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "옛 화태초등학교를 황토길 체험장과 요가·탁구 등을 갖춘 건강·힐링 체험공간으로 전환했다.",
+    "positive_insight": "폐교를 주민 건강·힐링 체험 콘텐츠로 특화해 도서 지역 주민 생활공간으로 재생했다.",
+    "risk_insight": "화태도 등 도서(섬) 지역 폐교라 접근성과 이용자 확보가 과제다.",
+    "source": "https://www.kukinews.com/article/view/kuk202604070142"
+  },
+  {
+    "case_id": "case2_hwasun_gyeongbok_culture_space",
+    "case_name": "화순 동면초 경복분교 복합문화공간",
+    "region": "전라남도 화순군 동면",
+    "related_models": ["주민 커뮤니티·복합문화공간"],
+    "summary": "옛 동면초등학교 경복분교를 평생교육에 체육·문화 기능을 결합한 복합문화공간으로 조성했다.",
+    "positive_insight": "교육·지자체·마을이 협력해 폐교를 주민이 공유하는 지역 복합문화 거점으로 전환했다.",
+    "risk_insight": "약 30억 원을 투입한 시설로 개관 이후 운영 프로그램의 지속성 확보가 관건이다.",
+    "source": "https://www.gjdream.com/news/articleView.html?idxno=668506"
+  }
+]
