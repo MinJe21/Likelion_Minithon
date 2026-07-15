@@ -56,14 +56,18 @@
   "evaluationId": "eval-20260715-001",
   "schoolId": "school-001",
   "idea": "이 폐교를 유아 체험센터로 활용하고 싶어요.",
-  "overallGrade": "MEDIUM",
+  "overallGrade": "HIGH",
+  "overallScore": 78,
+  "coverage": 80,
+  "statusCode": "CONDITIONAL_REVIEW",
+  "statusLabel": "일부 조건 확인 후 검토 가능",
   "summary": "활용 가능성이 있지만 운영 방식과 접근성 보완이 필요합니다.",
   "metrics": {
-    "spaceSuitability":       { "grade": "HIGH", "reasons": ["...", "..."] },
-    "accessibility":          { "grade": "LOW",  "reasons": ["...", "..."] },
-    "regionalDemand":         { "grade": "MEDIUM","reasons": ["...", "..."] },
-    "similarCaseSuitability": { "grade": "MEDIUM","reasons": ["...", "..."] },
-    "executionFeasibility":   { "grade": "HIGH", "reasons": ["...", "..."] }
+    "spaceSuitability":       { "grade": "HIGH",   "score": 4, "weight": 30, "weightedScore": 24.0, "reasons": ["...", "..."] },
+    "accessibility":          { "grade": "MEDIUM", "score": 3, "weight": 20, "weightedScore": 12.0, "reasons": ["...", "..."] },
+    "regionalDemand":         { "grade": "HIGH",   "score": 4, "weight": 20, "weightedScore": 16.0, "reasons": ["...", "..."] },
+    "similarCaseSuitability": { "grade": "VERY_HIGH","score": 5,"weight": 10, "weightedScore": 10.0, "reasons": ["...", "..."] },
+    "executionFeasibility":   { "grade": null,     "score": null, "weight": 20, "weightedScore": 0.0, "reasons": ["...미확인, 확인 필요..."] }
   },
   "strengths": ["...", "..."],
   "weaknesses": ["...", "..."],
@@ -79,23 +83,45 @@
 | `evaluationId` | String | 진단 결과 고유 ID |
 | `schoolId` | String | 요청 `school.schoolId`와 동일 |
 | `idea` | String | 입력 아이디어 |
-| `overallGrade` | Grade | 종합 적합도 |
+| `overallGrade` | Grade\|null | 종합 적합도(종합점수 구간에서 파생). 판단 제한이면 null |
+| `overallScore` | Integer\|null | 종합점수 0~100 (규칙 계산). 판단 제한이면 null |
+| `coverage` | Integer | 확인된 가중치 합(%) |
+| `statusCode` | String | 결과 구간 코드(아래) |
+| `statusLabel` | String | 결과 구간 사용자 표시 문구 |
 | `summary` | String | 종합 평가 문장 |
 | `metrics` | Object | 5개 세부 지표 (아래) |
 | `strengths` / `weaknesses` / `alternativeModels` | String[] | 장점 / 단점·보완점 / 대안 모델 |
 | `recommendation` | String | 최종 추천 문장 |
 | `createdAt` | String | ISO 8601 |
 
-### metrics 5개 지표 (각각 `{grade, reasons}` 구조)
-| 키 | 의미 |
-|---|---|
-| `spaceSuitability` | 공간 적합성 (부지·건물 구조가 아이디어 수용에 적합한가) |
-| `accessibility` | 접근성 (도로·대중교통·생활권 거리) |
-| `regionalDemand` | 지역 수요 (이용·필요 대상 존재 여부) |
-| `similarCaseSuitability` | 유사사례 적합성 (유사 활용사례 적용 가능성) |
-| `executionFeasibility` | 실행 가능성 (**HIGH일수록 실행 쉬움**, 리스크와 반대) |
+### metrics 5개 지표 (각각 `{grade, score, weight, weightedScore, reasons}`)
+| 키 | 가중치 | 의미 |
+|---|:-:|---|
+| `spaceSuitability` | 30 | 공간 적합성 (부지·건물 면적) |
+| `accessibility` | 20 | 접근성 (도로·대중교통·생활권 거리) |
+| `regionalDemand` | 20 | 지역 수요 (인구·관광·주변자원) |
+| `similarCaseSuitability` | 10 | 유사사례 적합성 (유사 활용사례) |
+| `executionFeasibility` | 20 | 실행 가능성 (**HIGH일수록 실행 쉬움**, 리스크와 반대) |
 
-- 각 지표: `grade`(Grade) + `reasons`(String[], **2~3개**, 각 비어있지 않은 한국어 문장).
+- `score`(1~5)/`grade`는 **규칙 엔진이 계산**(LLM 아님). 미확인이면 `score=null`,`grade=null`,`weightedScore=0`.
+- `reasons`(String[], 2~3개)는 LLM이 계산된 점수를 **설명**한 한국어 문장. 미확인 항목은 무엇을 확인해야 하는지 설명.
+
+### Core 진단 점수 계산 (규칙 기반)
+- 각 기준 1~5점 → `weightedScore = (score/5)×weight`. `overallScore = round(Σ확인 가중점수 ÷ Σ확인 가중치 × 100)`.
+- **미확인(null) 기준은 0점이 아니라 계산에서 제외**하고 `coverage`(확인된 가중치 합)를 함께 반환.
+- `coverage < 60%` 이면 점수와 무관하게 `INSUFFICIENT_DATA`(판단 제한).
+- 점수는 **결정적**(같은 입력→같은 점수). LLM은 점수를 정하지 않고 설명만 한다.
+
+### statusCode 구간
+| 종합점수 | statusCode | statusLabel |
+|---|---|---|
+| 80~100 | `HIGH_BASIC_FIT` | 기초 활용 가능성이 높음 |
+| 60~79 | `CONDITIONAL_REVIEW` | 일부 조건 확인 후 검토 가능 |
+| 40~59 | `MAJOR_CHECKS_REQUIRED` | 주요 조건 보완 필요 |
+| 0~39 | `LIMITED_FIT` | 현재 확인된 조건상 검토 부담이 큼 |
+| coverage<60% | `INSUFFICIENT_DATA` | 현재 자료만으로 판단 제한 |
+
+> MVP 참고: 접근성·지역수요·실행가능성 3개 기준은 데모 6개 폐교만 사전 조사/큐레이션 값(`demo_school_signals.json`)을 사용해 커버리지 100%가 됩니다. 그 외 학교는 이 세 기준이 미확인이라 커버리지 40% → `INSUFFICIENT_DATA`(판단 제한)가 됩니다. 본 가중치는 초기 가설이며 "60점=성공확률 60%"로 해석하지 않습니다.
 
 ---
 

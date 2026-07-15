@@ -1,0 +1,119 @@
+{
+  "_comment": "데모용 6개 폐교의 접근성·지역수요 사전 점수(1~5). 웹 지도·뉴스·KOSIS 등으로 조사, 거리/배차 등 실측 불가값은 추정. 규칙 엔진이 이 학교엔 이 점수를 사용하고 그 외 학교는 null(미확인) 처리한다.",
+  "signals": {
+    "demo_sanbuk_changgu": {
+      "schoolName": "산북초등학교 창구분교장",
+      "region": "경상북도 문경시 산북면",
+      "accessibility": {
+        "score": 2,
+        "reason": "산간 계곡 농촌으로 대중교통이 희소하고 차량이 필수이며 문경시청 약 25~30km·최근접 IC 20km+ (거리는 추정).",
+        "evidence": "ko.wikipedia.org/wiki/산북면_(문경시)"
+      },
+      "regionalDemand": {
+        "score": 2,
+        "reason": "배후 산북면 인구 약 2,806명(2022)·고령화, 관광은 김룡사 정도로 소규모, 문경시는 인구소멸 위험 지역.",
+        "evidence": "superkts.com/population Mungyeong-si"
+      },
+      "executionRisk": {
+        "score": 3,
+        "reason": "대부계획이 수립돼 있고 산간 소규모 분교라 대규모 시설 부담은 적으나, 노후·기반시설 상태는 현장 점검이 필요.",
+        "evidence": "추정(추진계획·규모·입지 기반), 현장 점검·교육청 협의 필요"
+      }
+    },
+    "demo_songna": {
+      "schoolName": "송라중학교",
+      "region": "경상북도 포항시 북구 송라면",
+      "accessibility": {
+        "score": 3,
+        "reason": "국도 7호선(동해대로) 간선에 인접하고 동해선 월포역·버스 축이 있으며 포항시청 약 28km, 면 지역이라 차량 필요.",
+        "evidence": "ko.wikipedia.org/wiki/송라면"
+      },
+      "regionalDemand": {
+        "score": 4,
+        "reason": "내연산·보경사와 화진해수욕장(연 관광객 약 80만) 등 관광이 활발해 배후 유동수요가 큼.",
+        "evidence": "korean.visitkorea.or.kr 내연산 보경사"
+      },
+      "executionRisk": {
+        "score": 3,
+        "reason": "대부계획이 있어 활용 경로는 있으나, 대형 중학교 건물이라 유지·리모델링 부담이 병존해 시설 상태 확인이 필요.",
+        "evidence": "추정(추진계획·규모 기반), 현장 점검 필요"
+      }
+    },
+    "demo_onhye": {
+      "schoolName": "온혜초등학교",
+      "region": "경상북도 안동시 도산면 온혜리",
+      "accessibility": {
+        "score": 3,
+        "reason": "국도 35호선 면소재지로 도산서원행 버스가 하루 5회 등 제한적 대중교통이 있고 안동시청 약 25~30km(거리 추정).",
+        "evidence": "ko.wikipedia.org/wiki/도산면_(안동시)"
+      },
+      "regionalDemand": {
+        "score": 4,
+        "reason": "정주인구 1,560명으로 희박하나 유네스코 세계유산 도산서원·퇴계종택 등 전국구 관광지가 반경 수 km 내 인접.",
+        "evidence": "namu.wiki/w/도산서원"
+      },
+      "executionRisk": {
+        "score": 3,
+        "reason": "대부계획이 있으나 도산서원 등 문화재 인근으로 경관·인허가 규제 가능성이 있어 사전 협의가 필요.",
+        "evidence": "추정(추진계획·입지 기반), 교육청·지자체 협의 필요"
+      }
+    },
+    "demo_imdong": {
+      "schoolName": "임동중학교",
+      "region": "경상북도 안동시 임동면",
+      "accessibility": {
+        "score": 3,
+        "reason": "국도 34호선 간선 연접·당진영덕고속도로 동안동IC 이용 가능하나 안동시청 약 25~30km(추정), 농촌 지선버스라 배차가 드묾.",
+        "evidence": "ko.wikipedia.org/wiki/임동면"
+      },
+      "regionalDemand": {
+        "score": 3,
+        "reason": "면 인구 1,704명(2022) 소멸경향이나 안동시 배후·임하호 관광·2027년 공립 대안학교 개교 예정이 수요 요인.",
+        "evidence": "newsis.com 경북 공립 대안학교"
+      },
+      "executionRisk": {
+        "score": 4,
+        "reason": "부지에 2027년 공립 대안학교 개교가 확정돼 활용 경로와 행정 방향이 명확해 상대적으로 실행 리스크가 낮음.",
+        "evidence": "추정(대안학교 개교 확정 기반), 세부 공사·예산은 확인 필요"
+      }
+    },
+    "demo_cheongsong_budong": {
+      "schoolName": "청송중학교 부동분교장",
+      "region": "경상북도 청송군 주왕산면",
+      "accessibility": {
+        "score": 1,
+        "reason": "주왕산 국립공원 산간 오지로 청송IC에서 주산지까지 차량 25~30분, 대중교통은 관광 연계 지선 수준으로 매우 희소해 차량 필수.",
+        "evidence": "ko.wikipedia.org/wiki/부동면"
+      },
+      "regionalDemand": {
+        "score": 4,
+        "reason": "주왕산 국립공원·주산지 전국구 관광거점이 인접해 관광수요는 활발하나 배후 주왕산면 1,810명·청송군 노인비중 43%+로 5는 아님.",
+        "evidence": "nabo.go.kr 청송군 고령화"
+      },
+      "executionRisk": {
+        "score": 2,
+        "reason": "주왕산 국립공원 구역 규제와 오지 입지로 인허가·기반시설 정비 부담이 커 실행 리스크가 높음.",
+        "evidence": "추정(국립공원 규제·입지 기반), 인허가·현장 점검 필요"
+      }
+    },
+    "demo_gaeum": {
+      "schoolName": "가음중학교",
+      "region": "경상북도 의성군 가음면",
+      "accessibility": {
+        "score": 2,
+        "reason": "의성 남단 농촌으로 지방도 위주이며 중앙고속도로 의성IC와 멀고 군청 약 15~20km대(추정)에 버스가 희소해 차량 필수.",
+        "evidence": "ko.wikipedia.org/wiki/가음면"
+      },
+      "regionalDemand": {
+        "score": 3,
+        "reason": "면 내부에 빙계계곡(군립공원)이 있고 조문국사적지 관광권과 가까워 일부 수요가 있으나 가음면 1,452명·의성군 노인비중 47.5%(전국 최고)로 배후 상주수요는 극히 취약.",
+        "evidence": "nabo.go.kr 의성군 고령화"
+      },
+      "executionRisk": {
+        "score": 2,
+        "reason": "매각계획이라 활용 주체의 매입 부담이 있고 인구소멸 지역이라 운영 지속 리스크가 큼.",
+        "evidence": "추정(매각계획·소멸위험 기반), 매입 조건·현장 점검 필요"
+      }
+    }
+  }
+}
