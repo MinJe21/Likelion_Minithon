@@ -22,7 +22,7 @@ import java.util.Set;
 public class ScoringEngine {
 
     private static final Logger log = LoggerFactory.getLogger(ScoringEngine.class);
-    private static final int W_SPACE = 30, W_ACCESS = 20, W_DEMAND = 20, W_SIMILAR = 10, W_RISK = 20;
+    private static final int W_SPACE = 20, W_ACCESS = 20, W_DEMAND = 20, W_SIMILAR = 20, W_RISK = 20;
     private static final int COVERAGE_MIN = 60;
 
     private final DemoSignalService demoSignals;

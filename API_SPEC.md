@@ -63,10 +63,10 @@
   "statusLabel": "일부 조건 확인 후 검토 가능",
   "summary": "활용 가능성이 있지만 운영 방식과 접근성 보완이 필요합니다.",
   "metrics": {
-    "spaceSuitability":       { "grade": "HIGH",   "score": 4, "weight": 30, "weightedScore": 24.0, "reasons": ["...", "..."] },
+    "spaceSuitability":       { "grade": "HIGH",   "score": 4, "weight": 20, "weightedScore": 16.0, "reasons": ["...", "..."] },
     "accessibility":          { "grade": "MEDIUM", "score": 3, "weight": 20, "weightedScore": 12.0, "reasons": ["...", "..."] },
     "regionalDemand":         { "grade": "HIGH",   "score": 4, "weight": 20, "weightedScore": 16.0, "reasons": ["...", "..."] },
-    "similarCaseSuitability": { "grade": "VERY_HIGH","score": 5,"weight": 10, "weightedScore": 10.0, "reasons": ["...", "..."] },
+    "similarCaseSuitability": { "grade": "VERY_HIGH","score": 5,"weight": 20, "weightedScore": 20.0, "reasons": ["...", "..."] },
     "executionFeasibility":   { "grade": null,     "score": null, "weight": 20, "weightedScore": 0.0, "reasons": ["...미확인, 확인 필요..."] }
   },
   "strengths": ["...", "..."],
@@ -97,10 +97,10 @@
 ### metrics 5개 지표 (각각 `{grade, score, weight, weightedScore, reasons}`)
 | 키 | 가중치 | 의미 |
 |---|:-:|---|
-| `spaceSuitability` | 30 | 공간 적합성 (부지·건물 면적) |
+| `spaceSuitability` | 20 | 공간 적합성 (부지·건물 면적) |
 | `accessibility` | 20 | 접근성 (도로·대중교통·생활권 거리) |
 | `regionalDemand` | 20 | 지역 수요 (인구·관광·주변자원) |
-| `similarCaseSuitability` | 10 | 유사사례 적합성 (유사 활용사례) |
+| `similarCaseSuitability` | 20 | 유사사례 적합성 (유사 활용사례) |
 | `executionFeasibility` | 20 | 실행 가능성 (**HIGH일수록 실행 쉬움**, 리스크와 반대) |
 
 - `score`(1~5)/`grade`는 **규칙 엔진이 계산**(LLM 아님). 미확인이면 `score=null`,`grade=null`,`weightedScore=0`.
