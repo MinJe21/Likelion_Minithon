@@ -130,7 +130,7 @@ public class AiService {
         }
 
         // 1) 규칙 엔진이 점수를 결정 (LLM 아님)
-        CoreScore cs = scoringEngine.score(school, trimmed + " / " + school.toPromptText());
+        CoreScore cs = scoringEngine.score(school, trimmed);
 
         // 2) LLM은 계산된 점수/등급을 "설명"만 한다
         String prompt = """
