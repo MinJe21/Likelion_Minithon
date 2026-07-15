@@ -92,7 +92,11 @@ public class ScoringEngine {
         return new CoreScore(overall, coverage, code, label, space, access, demand, similar, risk);
     }
 
-    /** 아이디어의 필요 면적 성격(LARGE/MEDIUM/SMALL)에 맞춰 학교 면적으로 채점 */
+    /**
+     * 아이디어의 필요 면적 성격에 맞춰 "적정 규모 매칭"으로 채점.
+     * 실내형(SMALL/MEDIUM)은 적정 범위를 벗어나면(과대=유휴·유지부담, 과소=수용 부족) 감점 → 큰 학교라고 무조건 만점 아님.
+     * 넓은 부지형(LARGE)은 부지가 클수록 유리하되 임계값을 엄격 적용.
+     */
     private CriterionScore scoreSpace(SchoolInput s, String idea) {
         Double site = s.siteArea();
         Double bld = s.buildingArea();
@@ -100,38 +104,54 @@ public class ScoringEngine {
 
         switch (tier) {
             case LARGE -> {
-                // 캠핑·스포츠·리조트 등 넓은 부지 필요 → 부지면적 기준(엄격)
                 if (site != null) {
-                    int sc = site >= 25000 ? 5 : site >= 15000 ? 4 : site >= 9000 ? 3 : site >= 5000 ? 2 : 1;
-                    return CriterionScore.confirmed(sc, W_SPACE, "넓은 부지 필요 유형 · 부지 " + fmt(site) + "㎡ 기준");
+                    int sc = site >= 30000 ? 5 : site >= 20000 ? 4 : site >= 12000 ? 3 : site >= 7000 ? 2 : 1;
+                    String q = sc >= 4 ? "충분" : sc == 3 ? "보통(다소 협소할 수 있음)" : "협소";
+                    return CriterionScore.confirmed(sc, W_SPACE,
+                            "넓은 부지 필요 유형 · 부지 " + fmt(site) + "㎡ → " + q);
                 }
                 return bld != null
-                        ? CriterionScore.confirmed(2, W_SPACE, "넓은 부지 필요하나 부지면적 미확인, 건물만 확인")
+                        ? CriterionScore.confirmed(2, W_SPACE, "넓은 부지 필요하나 부지면적 미확인")
                         : CriterionScore.unknown(W_SPACE, "면적 정보 미확인");
             }
             case SMALL -> {
-                // 카페·공방·전시 등 실내 소규모 → 건물면적 기준(관대)
+                // 카페·공방·전시 등 실내 소규모: 적정 건물 약 350~1,000㎡. 과대하면 유휴·유지부담으로 감점.
                 if (bld != null) {
-                    int sc = bld >= 1500 ? 5 : bld >= 800 ? 4 : bld >= 400 ? 3 : bld >= 200 ? 2 : 1;
-                    return CriterionScore.confirmed(sc, W_SPACE, "실내 소규모 유형 · 건물 " + fmt(bld) + "㎡ 기준");
+                    int sc = peaked(bld, 350, 1000);
+                    return CriterionScore.confirmed(sc, W_SPACE,
+                            "실내 소규모 유형 · 건물 " + fmt(bld) + "㎡ → " + fitLabel(bld, 350, 1000));
                 }
-                return site != null
-                        ? CriterionScore.confirmed(4, W_SPACE, "소규모 유형 · 부지 여유(" + fmt(site) + "㎡)")
-                        : CriterionScore.unknown(W_SPACE, "면적 정보 미확인");
+                return CriterionScore.unknown(W_SPACE, "건물면적 미확인");
             }
             default -> {
-                // 체험센터·커뮤니티 등 중간 → 건물면적 중심
+                // 체험센터·커뮤니티 등 중규모: 적정 건물 약 1,200~2,800㎡.
                 if (bld != null) {
-                    int sc = bld >= 2500 ? 5 : bld >= 1500 ? 4 : bld >= 800 ? 3 : bld >= 400 ? 2 : 1;
-                    return CriterionScore.confirmed(sc, W_SPACE, "중규모 유형 · 건물 " + fmt(bld) + "㎡ 기준");
+                    int sc = peaked(bld, 1200, 2800);
+                    return CriterionScore.confirmed(sc, W_SPACE,
+                            "중규모 유형 · 건물 " + fmt(bld) + "㎡ → " + fitLabel(bld, 1200, 2800));
                 }
                 if (site != null) {
-                    int sc = site >= 15000 ? 4 : site >= 8000 ? 3 : 2;
-                    return CriterionScore.confirmed(sc, W_SPACE, "중규모 유형 · 부지 " + fmt(site) + "㎡ 기준");
+                    int sc = site >= 15000 ? 3 : 2;
+                    return CriterionScore.confirmed(sc, W_SPACE, "중규모 유형 · 건물면적 미확인, 부지만 확인");
                 }
                 return CriterionScore.unknown(W_SPACE, "면적 정보 미확인");
             }
         }
+    }
+
+    /** 적정 범위[lo,hi]에 가까울수록 고득점, 과소·과대할수록 감점(1~5). */
+    private static int peaked(double a, double lo, double hi) {
+        if (a >= lo && a <= hi) return 5;
+        if ((a >= 0.6 * lo && a < lo) || (a > hi && a <= 1.8 * hi)) return 4;
+        if ((a >= 0.35 * lo && a < 0.6 * lo) || (a > 1.8 * hi && a <= 3.2 * hi)) return 3;
+        if ((a >= 0.2 * lo && a < 0.35 * lo) || (a > 3.2 * hi && a <= 5.0 * hi)) return 2;
+        return 1;
+    }
+
+    private static String fitLabel(double a, double lo, double hi) {
+        if (a >= lo && a <= hi) return "적정 규모";
+        if (a > hi) return a > 1.8 * hi ? "규모 과대(유휴공간·유지부담)" : "다소 과대";
+        return a < 0.35 * lo ? "규모 과소(수용 부족)" : "다소 협소";
     }
 
     /** 아이디어 용도와 실제 사례의 활용모델 매칭 + 벡터 유사도로 채점 */
