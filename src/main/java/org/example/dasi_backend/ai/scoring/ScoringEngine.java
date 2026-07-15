@@ -68,6 +68,19 @@ public class ScoringEngine {
             risk = CriterionScore.unknown(W_RISK, "시설·행정·예산 상태 미확인 — 현장 점검 및 교육청 협의 필요");
         }
 
+        // 용도 적합성 게이트 — 폐교 재생 취지·행정 여건에 맞지 않는 용도는 강하게 감점
+        IdeaClassifier.Appropriateness appr = IdeaClassifier.appropriateness(idea);
+        if (appr == IdeaClassifier.Appropriateness.UNFIT) {
+            space = CriterionScore.confirmed(1, W_SPACE, "폐교 재생 취지·행정 여건에 부합하지 않는 용도로 공간 적합성이 낮음");
+            demand = CriterionScore.confirmed(1, W_DEMAND, "해당 용도에 대한 지역 수요 근거가 부족하고 지역 수용성 우려가 큼");
+            similar = CriterionScore.confirmed(1, W_SIMILAR, "폐교 활용 공식 사례에서 찾기 어려운 용도");
+            risk = CriterionScore.confirmed(1, W_RISK, "인허가·주민 수용·교육청 대부/매각 승인 부담이 매우 큼");
+        } else if (appr == IdeaClassifier.Appropriateness.WEAK) {
+            space = capScore(space, 3, "폐교 공간 특성(교실 구조·부지)을 특별히 살리지 못하는 일반 용도");
+            demand = capScore(demand, 2, "폐교 입지에서 해당 일반 상업 용도의 수요는 제한적");
+            similar = capScore(similar, 2, "폐교 활용 대표 사례와의 정합성이 낮은 용도");
+        }
+
         // 종합 (확인된 기준만으로 정규화)
         List<CriterionScore> all = List.of(space, access, demand, similar, risk);
         int coverage = all.stream().filter(CriterionScore::confirmed).mapToInt(CriterionScore::weight).sum();
@@ -201,6 +214,12 @@ public class ScoringEngine {
                 .map(d -> catalog.caseById(String.valueOf(d.getMetadata().get("case_id"))).orElse(null))
                 .filter(c -> c != null && c.relatedModels() != null)
                 .anyMatch(c -> c.relatedModels().stream().anyMatch(ideaModels::contains));
+    }
+
+    /** 확인된 기준의 점수를 상한 이하로 낮춘다(미확인은 그대로). */
+    private static CriterionScore capScore(CriterionScore c, int max, String reason) {
+        if (!c.confirmed() || c.score() == null || c.score() <= max) return c;
+        return CriterionScore.confirmed(max, c.weight(), reason + " (원점수 " + c.score() + "→상한 " + max + ")");
     }
 
     private static int clamp(int v) {

@@ -13,6 +13,19 @@ public final class IdeaClassifier {
 
     public enum AreaTier { LARGE, MEDIUM, SMALL }
 
+    /** 용도 적합성: 폐교 재생 취지·행정 여건 부합도 */
+    public enum Appropriateness { FIT, WEAK, UNFIT }
+
+    // 부적합/유해·행정 불허 가능성이 큰 용도(혐오시설 포함)
+    private static final List<String> UNFIT_KW = List.of(
+            "쓰레기", "매립", "소각", "폐기물", "하수", "분뇨", "축사", "공장", "제조",
+            "유흥", "도박", "카지노", "성인", "주점", "나이트", "클럽",
+            "화장장", "장례", "납골", "교도소", "사격", "무기", "정유", "발전소");
+    // 폐교 특성을 특별히 살리지 못하는 일반 상업 용도
+    private static final List<String> WEAK_KW = List.of(
+            "피시방", "피씨방", "PC방", "pc방", "노래방", "당구", "오락실", "편의점",
+            "사무실", "오피스", "창고", "물류", "주차장", "모텔", "은행", "약국");
+
     // 활용모델 카테고리별 키워드
     private static final Map<String, List<String>> MODEL_KEYWORDS = Map.of(
             "유아 체험센터", List.of("유아", "어린이", "아동", "키즈", "놀이", "체험학습"),
@@ -41,6 +54,20 @@ public final class IdeaClassifier {
             }
         }
         return out;
+    }
+
+    /**
+     * 용도 적합성 판정.
+     * - UNFIT: 혐오·유해·행정 불허 가능성이 큰 용도
+     * - FIT: 폐교 재생에 부합하는 활용모델(교육·문화·카페·숙박·예술·커뮤니티·캠핑)에 매칭
+     * - WEAK: 그 외(일반 상업 또는 정형화되지 않은 아이디어) → 보수적으로 중간 이하
+     */
+    public static Appropriateness appropriateness(String idea) {
+        if (idea == null || idea.isBlank()) return Appropriateness.WEAK;
+        for (String kw : UNFIT_KW) if (idea.contains(kw)) return Appropriateness.UNFIT;
+        if (!models(idea).isEmpty()) return Appropriateness.FIT;
+        for (String kw : WEAK_KW) if (idea.contains(kw)) return Appropriateness.WEAK;
+        return Appropriateness.WEAK;
     }
 
     /** 아이디어의 필요 면적 성격 */
