@@ -2,8 +2,11 @@ package org.example.dasi_backend.ai;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.dasi_backend.ai.llm.LlmCheckpoints;
-import org.example.dasi_backend.ai.llm.LlmIdeaEvaluation;
+import org.example.dasi_backend.ai.llm.LlmIdeaExplanation;
 import org.example.dasi_backend.ai.llm.LlmRecommendations;
+import org.example.dasi_backend.ai.scoring.CoreScore;
+import org.example.dasi_backend.ai.scoring.CriterionScore;
+import org.example.dasi_backend.ai.scoring.ScoringEngine;
 import org.example.dasi_backend.diagnose.CatalogService;
 import org.example.dasi_backend.diagnose.SimilarCase;
 import org.slf4j.Logger;
@@ -58,12 +61,15 @@ public class AiService {
     private final ChatClient chatClient;
     private final VectorStore vectorStore;
     private final CatalogService catalog;
+    private final ScoringEngine scoringEngine;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public AiService(ChatClient.Builder builder, VectorStore vectorStore, CatalogService catalog) {
+    public AiService(ChatClient.Builder builder, VectorStore vectorStore, CatalogService catalog,
+                     ScoringEngine scoringEngine) {
         this.chatClient = builder.defaultSystem(SYSTEM_PROMPT).build();
         this.vectorStore = vectorStore;
         this.catalog = catalog;
+        this.scoringEngine = scoringEngine;
     }
 
     // ---------------------------------------------------------------- 활용모델 추천
@@ -123,8 +129,13 @@ public class AiService {
             throw new AiException(AiException.Code.IDEA_TOO_LONG, "아이디어는 최대 " + IDEA_MAX + "자까지 입력할 수 있습니다.");
         }
 
+        // 1) 규칙 엔진이 점수를 결정 (LLM 아님)
+        CoreScore cs = scoringEngine.score(school, trimmed + " / " + school.toPromptText());
+
+        // 2) LLM은 계산된 점수/등급을 "설명"만 한다
         String prompt = """
-                다음 폐교 데이터와 사용자의 활용 아이디어를 비교해 적합성을 진단해줘.
+                아래 폐교와 아이디어에 대해 규칙 엔진이 이미 계산한 등급/점수를 설명하는 문장을 작성해줘.
+                점수를 바꾸지 말고, 주어진 등급과 일관된 판단 이유를 써라. 미확인 항목은 무엇을 확인해야 하는지 설명해라.
 
                 [폐교 데이터]
                 %s
@@ -132,51 +143,89 @@ public class AiService {
                 [사용자 아이디어]
                 %s
 
-                [활용모델 후보]
+                [규칙 엔진 계산 결과]
                 %s
 
                 [참고 유사사례]
                 %s
 
-                다음을 채워줘:
-                - summary: 한 문장 요약
-                - overallGrade: 종합 적합도 등급
-                - metrics: 아래 5개 지표. 각 지표는 grade 와 reasons(구체적 판단 이유 2~3개)를 포함한다.
-                  spaceSuitability(공간 적합성), accessibility(접근성), regionalDemand(지역 수요),
-                  similarCaseSuitability(유사사례 적합성), executionFeasibility(실행 가능성; 높을수록 실행 쉬움)
-                - strengths(2개), weaknesses(2개), alternativeModels(2개)
-                - recommendation: 실행 가능성을 높이는 구체적 보완 방향
-                """.formatted(school.toPromptText(), trimmed, toJson(catalog.useModels()),
+                작성할 것:
+                - summary: 종합 등급/점수와 일관된 한 문장 요약
+                - reasons: 5개 지표(spaceSuitability, accessibility, regionalDemand, similarCaseSuitability, executionFeasibility)
+                  각각 2~3개의 판단 이유
+                - strengths(2), weaknesses(2), alternativeModels(2), recommendation
+                """.formatted(school.toPromptText(), trimmed, describeScores(cs),
                 toJson(retrieveCases(trimmed + " / " + school.toPromptText())));
 
-        LlmIdeaEvaluation llm = callLlm(() ->
-                chatClient.prompt().user(prompt).call().entity(LlmIdeaEvaluation.class));
+        LlmIdeaExplanation ex = callLlm(() ->
+                chatClient.prompt().user(prompt).call().entity(LlmIdeaExplanation.class));
+        if (ex == null || ex.summary() == null || ex.summary().isBlank() || ex.reasons() == null) {
+            throw new AiException(AiException.Code.AI_RESPONSE_INVALID, "AI 진단 설명 형식을 확인할 수 없습니다.");
+        }
 
-        validateIdeaEvaluation(llm);
+        // 3) 규칙 점수 + LLM 설명 결합
+        LlmIdeaExplanation.Reasons r = ex.reasons();
+        Metrics metrics = new Metrics(
+                metric(cs.spaceFit(), r.spaceSuitability()),
+                metric(cs.accessibility(), r.accessibility()),
+                metric(cs.regionalDemand(), r.regionalDemand()),
+                metric(cs.similarCaseFit(), r.similarCaseSuitability()),
+                metric(cs.executionRisk(), r.executionFeasibility()));
 
-        log.info("아이디어 진단 완료: school={}", school.schoolId());
+        log.info("아이디어 진단 완료: school={}, overall={}, status={}",
+                school.schoolId(), cs.overallScore(), cs.statusCode());
         return new IdeaEvaluationResponse(
                 newEvaluationId(), school.schoolId(), trimmed,
-                llm.overallGrade(), llm.summary(), llm.metrics(),
-                llm.strengths(), llm.weaknesses(), llm.alternativeModels(),
-                llm.recommendation(), now());
+                bandToGrade(cs.overallScore()), cs.overallScore(), cs.coverage(),
+                cs.statusCode(), cs.statusLabel(),
+                ex.summary(), metrics,
+                ex.strengths(), ex.weaknesses(), ex.alternativeModels(), ex.recommendation(), now());
     }
 
-    private void validateIdeaEvaluation(LlmIdeaEvaluation llm) {
-        if (llm == null || llm.overallGrade() == null || llm.metrics() == null) {
-            throw new AiException(AiException.Code.AI_RESPONSE_INVALID, "AI가 유효한 진단 결과를 생성하지 못했습니다.");
-        }
-        Metrics m = llm.metrics();
-        MetricDetail[] all = {m.spaceSuitability(), m.accessibility(), m.regionalDemand(),
-                m.similarCaseSuitability(), m.executionFeasibility()};
-        for (MetricDetail d : all) {
-            if (d == null || d.grade() == null || d.reasons() == null
-                    || d.reasons().size() < 2 || d.reasons().size() > 3
-                    || d.reasons().stream().anyMatch(r -> r == null || r.isBlank())) {
-                throw new AiException(AiException.Code.AI_RESPONSE_INVALID,
-                        "AI 진단 결과 형식을 확인할 수 없습니다.");
-            }
-        }
+    /** 규칙 점수 1건 + LLM 설명을 MetricDetail 로 결합 */
+    private MetricDetail metric(CriterionScore c, List<String> reasons) {
+        List<String> rs = (reasons == null || reasons.isEmpty())
+                ? List.of(c.reasonSeed() == null ? "확인이 필요합니다." : c.reasonSeed())
+                : reasons;
+        return new MetricDetail(scoreToGrade(c.score()), c.score(), c.weight(), c.weightedScore(), rs);
+    }
+
+    /** LLM 프롬프트에 넣을, 규칙 엔진 계산 결과 서술 */
+    private String describeScores(CoreScore cs) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(line("공간 적합성", cs.spaceFit()));
+        sb.append(line("접근성", cs.accessibility()));
+        sb.append(line("지역 수요", cs.regionalDemand()));
+        sb.append(line("유사사례 적합성", cs.similarCaseFit()));
+        sb.append(line("실행 가능성(리스크)", cs.executionRisk()));
+        sb.append("종합점수: ").append(cs.overallScore() == null ? "판단 제한" : cs.overallScore() + "점")
+                .append(" / 커버리지: ").append(cs.coverage()).append("% / 상태: ").append(cs.statusLabel());
+        return sb.toString();
+    }
+
+    private String line(String name, CriterionScore c) {
+        String grade = c.score() == null ? "미확인" : c.score() + "/5(" + scoreToGrade(c.score()) + ")";
+        return "- " + name + ": " + grade + " — 근거: " + (c.reasonSeed() == null ? "" : c.reasonSeed()) + "\n";
+    }
+
+    private static Grade scoreToGrade(Integer score) {
+        if (score == null) return null;
+        return switch (score) {
+            case 5 -> Grade.VERY_HIGH;
+            case 4 -> Grade.HIGH;
+            case 3 -> Grade.MEDIUM;
+            case 2 -> Grade.LOW;
+            default -> Grade.VERY_LOW;
+        };
+    }
+
+    private static Grade bandToGrade(Integer overall) {
+        if (overall == null) return null;
+        if (overall >= 80) return Grade.VERY_HIGH;
+        if (overall >= 60) return Grade.HIGH;
+        if (overall >= 40) return Grade.MEDIUM;
+        if (overall >= 20) return Grade.LOW;
+        return Grade.VERY_LOW;
     }
 
     // ---------------------------------------------------------------- 최종 체크포인트
